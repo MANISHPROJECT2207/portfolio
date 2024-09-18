@@ -78,11 +78,22 @@ function backToTop() {
 
 
 
-var email = document.querySelector("#email")
-function onSubmit(event) {
-  event.preventDefault();
-  var name = document.querySelector("#name")
 
-  console.log(name, email);
-}
 
+const formElem = document.querySelector("form");
+
+// submit handler
+
+formElem.addEventListener("submit", (e) => {
+  // on form submission, prevent default
+  e.preventDefault();
+  // construct a FormData object, which fires the formdata event
+  const formData = new FormData(formElem);
+  // formdata gets modified by the formdata event
+  console.log(formData.get("name"));
+
+  console.log(formData.get("email")); 
+  console.log(formData.get("message"));
+  alert("name: " + formData.get("name") + " email: " + formData.get("email") + " message: " + formData.get("message"))
+  
+});
